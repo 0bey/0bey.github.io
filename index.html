@@ -1,1 +1,201 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name="theme-color" content="#000000"><link rel="manifest" href="/manifest.json"><link rel="shortcut icon" href="/favicon.ico"><title>0bey</title><link href="/static/css/main.641f0ad4.css" rel="stylesheet"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div><script type="text/javascript" src="/static/js/main.49b8fe3f.js"></script></body></html>
+<html>
+  <head>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;740;900&display=swap');
+
+      html {
+        --grid-cell-size: 16px;
+        --color-primary: #111;
+        --color-secondary: #f4f4f4;
+        --background-color-primary: #f4f4f4;
+        --background-color-secondary: #111;
+      }
+
+      * {
+        align-self: end;
+      }
+
+      @media (prefers-color-scheme: light) {
+        body {
+          --color-primary: #111;
+          --background-color-secondary: #111;
+          --background-color-primary: #f4f4f4;
+          --color-secondary: #f4f4f4;
+        }
+      }
+
+      @media (prefers-color-scheme: dark) {
+        html {
+          --background-color-primary: #111;
+          --background-color-secondary: #f4f4f4;
+          --color-primary: #f4f4f4;
+          --color-secondary: #111;
+        }
+      }
+
+      body {
+        font-family: 'Inter', monospace;
+        background-color: var(--background-color-primary);
+        color: var(--color-primary);
+      }
+
+      svg {
+        fill: var(--color-primary);
+      }
+
+      #content {
+        height: calc(100% - 48px);
+      }
+
+      #container {
+        max-width: 750px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 240px 1fr;
+        grid-auto-rows: max-content;
+        grid-gap: 4px;
+        padding: 8px;
+        box-sizing: border-box;
+        height: 100%;
+      }
+
+      #title {
+        font-size: 2rem;
+        font-weight: 740;
+        letter-spacing: -0.055em;
+        margin-bottom: 0.25rem;
+        margin-top: 1.25rem;
+        margin:0;
+        align-self: end;
+        margin-left: -4px;
+      }
+
+      #subtitle {
+        align-self: end;
+        display: block;
+        height: 100%;
+        grid-column: 1;
+      }
+
+      .post-timestamp {
+        grid-column: 1;
+        margin-top: 16px; 
+      }
+
+      .post-title {
+        grid-column: 2;
+        margin-top: 16px;
+        font-weight: 740;
+      }
+
+      .post-body {
+        grid-column: 2;
+      }
+
+      #github-icon {
+        height: 16px;
+        width: 16px;
+        margin-left: 4px;
+      }
+
+      #resume-icon {
+        height: 16px;
+        width: 16px;
+        margin-left: 4px;
+      }
+
+      header {
+        grid-row: 1;
+        grid-column: span 2;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      #link-group {
+        display: flex;
+        align-items: center;
+        height: 100%;
+      }
+
+      .icon-link {
+        display: inline-flex;
+        align-items: center;
+        margin-left: 16px;
+        padding: 4px 8px;
+        box-sizing: border-box;
+        border: solid 1px var(--color-primary);
+        border-radius: 4px;
+        text-decoration: none;
+        color: inherit;
+        height: 2rem;
+        align-self: center;
+        justify-self: center;
+        align-items: center;
+      }
+
+      .icon-link, .icon-link > svg {
+        transition: all 0.25s ease-in;
+      }
+
+      .icon-link:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+      }
+      
+      .icon-link:active > svg {
+        fill: var(--color-secondary);
+      }
+
+      .icon-link:active {
+        background-color: var(--background-color-secondary);
+        color: var(--color-secondary);
+      }
+
+      #header-img {
+        grid-row: 3;
+        grid-column: 1 / 3;
+        object-position: center;
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+        padding-top: 8px;
+        box-sizing: border-box;
+        max-height: 75vh;
+      }
+
+      #header-text {
+        grid-row: 3;
+        grid-column: 1 / 3;
+        color: var(--color-secondary);
+        margin: auto;
+        font-weight: 900;
+        text-transform: lowercase;
+        font-size: 2.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <header>
+        <span id="title">Gordon Finnie III</span>
+        <span id="link-group">
+          <a class="icon-link" href="https://github.com/Michigander" target='_blank'>
+            code
+            <svg id="github-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32.58 31.77"><title>gh-dark</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path d="M16.29,0a16.29,16.29,0,0,0-5.15,31.75c.82.15,1.11-.36,1.11-.79s0-1.41,0-2.77C7.7,29.18,6.74,26,6.74,26a4.36,4.36,0,0,0-1.81-2.39c-1.47-1,.12-1,.12-1a3.43,3.43,0,0,1,2.49,1.68,3.48,3.48,0,0,0,4.74,1.36,3.46,3.46,0,0,1,1-2.18c-3.62-.41-7.42-1.81-7.42-8a6.3,6.3,0,0,1,1.67-4.37,5.94,5.94,0,0,1,.16-4.31s1.37-.44,4.48,1.67a15.41,15.41,0,0,1,8.16,0c3.11-2.11,4.47-1.67,4.47-1.67A5.91,5.91,0,0,1,25,11.07a6.3,6.3,0,0,1,1.67,4.37c0,6.26-3.81,7.63-7.44,8a3.85,3.85,0,0,1,1.11,3c0,2.18,0,3.94,0,4.47s.29.94,1.12.78A16.29,16.29,0,0,0,16.29,0Z" style="fill-rule:evenodd"/></g></g></svg>
+          </a>
+          <a class="icon-link" href="/resume.pdf" download>
+            cv
+            <svg id="resume-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M2 0v24h10.189c3.163 0 9.811-7.223 9.811-9.614v-14.386h-20zm12 16s1.518 6-2.638 6h-7.362v-15h16v6.543c0 4.107-6 2.457-6 2.457z"/></svg>
+          </a>
+        </span>
+      </header>
+      <span id="subtitle">Software Engineer</span>
+      <img id="header-img" src="garden.png"></img>
+      <span id="header-text"></span>
+      <!-- <span class="post-timestamp">2020-08-10</span>
+      <span class="post-title">An Introduction</span>
+      <span class="post-body">This site should serve as my identity. </span> -->
+    </div>
+  </body>
+</html>
