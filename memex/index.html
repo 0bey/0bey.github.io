@@ -1,8 +1,12 @@
 <html>
   <head>
-    <meta id="meta" name="viewport" content="width=device-width; initial-scale=1.0" />
+    <meta
+      id="meta"
+      name="viewport"
+      content="width=device-width; initial-scale=1.0"
+    />
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;740;900&display=swap');
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;740;900&display=swap");
 
       html {
         --color-primary: #111;
@@ -30,7 +34,7 @@
       }
 
       body {
-        font-family: 'Inter', monospace;
+        font-family: "Inter", monospace;
         background-color: var(--background-color-primary);
         color: var(--color-primary);
       }
@@ -58,7 +62,9 @@
         align-self: end;
       }
 
-      #github-icon, #resume-icon, #memex-icon {
+      #github-icon,
+      #resume-icon,
+      #memex-icon {
         height: 16px;
         width: 16px;
         margin-left: 4px;
@@ -85,8 +91,21 @@
         display: flex;
         align-items: flex-start;
         grid-column: 1;
-        font-family: 'inconsolata';
+        font-family: "inconsolata";
         margin-bottom: 0.5rem;
+      }
+
+      .content {
+        grid-row: 3;
+        grid-column: 1 / 3;
+        width: 100%;
+        box-sizing: border-box;
+        height: 100%;
+        align-self: start;
+        border: solid 1px var(--color-primary);
+        /* border-radius: 0 0 0.25rem 0.25rem; */
+        box-shadow: 2px 2px var(--color-primary);
+        overflow-y: auto;
       }
 
       .icon-link {
@@ -104,7 +123,8 @@
         padding: 0.25rem;
       }
 
-      .icon-link, .icon-link > svg {
+      .icon-link,
+      .icon-link > svg {
         transition: all 0.25s ease-in;
       }
 
@@ -112,7 +132,7 @@
         cursor: pointer;
         transform: scale(1.1);
       }
-      
+
       .icon-link:active > svg {
         fill: var(--color-secondary);
       }
@@ -124,31 +144,74 @@
 
       .icon-link.selected {
         border: 1px solid black;
-        background: #eaeaea;
-        border-radius: 4px 4px 0 0;
-        box-shadow: 2px 2px black;
+        border-radius: 0.25rem 0.25rem 0 0;
+        box-shadow: 2px 2px var(--color-primary);
+      }
+
+      #memex {
+        font-family: "inconsolata";
+        padding: 0.5rem;
       }
     </style>
+    <script type="module" src="memex.js"></script>
   </head>
   <body>
     <div id="container">
       <span id="title">Gordon Finnie III</span>
       <span id="link-group">
-        <a class="icon-link" href="https://github.com/Michigander" target='_blank'>
+        <a
+          class="icon-link"
+          href="https://github.com/Michigander"
+          target="_blank"
+        >
           code
-          <svg id="github-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32.58 31.77"><title>gh-dark</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path d="M16.29,0a16.29,16.29,0,0,0-5.15,31.75c.82.15,1.11-.36,1.11-.79s0-1.41,0-2.77C7.7,29.18,6.74,26,6.74,26a4.36,4.36,0,0,0-1.81-2.39c-1.47-1,.12-1,.12-1a3.43,3.43,0,0,1,2.49,1.68,3.48,3.48,0,0,0,4.74,1.36,3.46,3.46,0,0,1,1-2.18c-3.62-.41-7.42-1.81-7.42-8a6.3,6.3,0,0,1,1.67-4.37,5.94,5.94,0,0,1,.16-4.31s1.37-.44,4.48,1.67a15.41,15.41,0,0,1,8.16,0c3.11-2.11,4.47-1.67,4.47-1.67A5.91,5.91,0,0,1,25,11.07a6.3,6.3,0,0,1,1.67,4.37c0,6.26-3.81,7.63-7.44,8a3.85,3.85,0,0,1,1.11,3c0,2.18,0,3.94,0,4.47s.29.94,1.12.78A16.29,16.29,0,0,0,16.29,0Z" style="fill-rule:evenodd"/></g></g></svg>
+          <svg
+            id="github-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 32.58 31.77"
+          >
+            <title>gh-dark</title>
+            <g id="Layer_2" data-name="Layer 2">
+              <g id="Layer_1-2" data-name="Layer 1">
+                <path
+                  d="M16.29,0a16.29,16.29,0,0,0-5.15,31.75c.82.15,1.11-.36,1.11-.79s0-1.41,0-2.77C7.7,29.18,6.74,26,6.74,26a4.36,4.36,0,0,0-1.81-2.39c-1.47-1,.12-1,.12-1a3.43,3.43,0,0,1,2.49,1.68,3.48,3.48,0,0,0,4.74,1.36,3.46,3.46,0,0,1,1-2.18c-3.62-.41-7.42-1.81-7.42-8a6.3,6.3,0,0,1,1.67-4.37,5.94,5.94,0,0,1,.16-4.31s1.37-.44,4.48,1.67a15.41,15.41,0,0,1,8.16,0c3.11-2.11,4.47-1.67,4.47-1.67A5.91,5.91,0,0,1,25,11.07a6.3,6.3,0,0,1,1.67,4.37c0,6.26-3.81,7.63-7.44,8a3.85,3.85,0,0,1,1.11,3c0,2.18,0,3.94,0,4.47s.29.94,1.12.78A16.29,16.29,0,0,0,16.29,0Z"
+                  style="fill-rule: evenodd"
+                />
+              </g>
+            </g>
+          </svg>
         </a>
         <a class="icon-link" href="/resume.pdf" download>
           cv
-          <svg id="resume-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M2 0v24h10.189c3.163 0 9.811-7.223 9.811-9.614v-14.386h-20zm12 16s1.518 6-2.638 6h-7.362v-15h16v6.543c0 4.107-6 2.457-6 2.457z"/></svg>
+          <svg
+            id="resume-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M2 0v24h10.189c3.163 0 9.811-7.223 9.811-9.614v-14.386h-20zm12 16s1.518 6-2.638 6h-7.362v-15h16v6.543c0 4.107-6 2.457-6 2.457z"
+            />
+          </svg>
         </a>
-        <a class="icon-link" href="/memex">
+        <a class="icon-link selected" href="/memex">
           memex
           <!-- <svg id="memex-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20 3c0-1.657-1.344-3-3-3s-3 1.343-3 3c0 .312.061.606.149.889l-4.21 3.157c.473.471.878 1.01 1.201 1.599l4.197-3.148c.477.316 1.048.503 1.663.503 1.656 0 3-1.343 3-3zm-2 0c0 .551-.448 1-1 1s-1-.449-1-1 .448-1 1-1 1 .449 1 1zm3 12.062c1.656 0 3-1.343 3-3s-1.344-3-3-3c-1.281 0-2.367.807-2.797 1.938h-6.283c.047.328.08.66.08 1s-.033.672-.08 1h6.244c.396 1.195 1.509 2.062 2.836 2.062zm-1-3c0-.551.448-1 1-1s1 .449 1 1-.448 1-1 1-1-.448-1-1zm-20-.062c0 2.761 2.238 5 5 5s5-2.239 5-5-2.238-5-5-5-5 2.239-5 5zm2 0c0-1.654 1.346-3 3-3s3 1.346 3 3-1.346 3-3 3-3-1.346-3-3zm7.939 4.955l4.21 3.157c-.088.282-.149.576-.149.888 0 1.657 1.344 3 3 3s3-1.343 3-3-1.344-3-3-3c-.615 0-1.186.187-1.662.504l-4.197-3.148c-.324.589-.729 1.127-1.202 1.599zm6.061 4.045c0-.551.448-1 1-1s1 .449 1 1-.448 1-1 1-1-.449-1-1z"/></svg> -->
-          <svg id="memex-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 7c2.761 0 5 2.239 5 5s-2.239 5-5 5-5-2.239-5-5 2.239-5 5-5zm11.122 12.065c-.073.301-.122.611-.122.935 0 2.209 1.791 4 4 4s4-1.791 4-4-1.791-4-4-4c-1.165 0-2.204.506-2.935 1.301l-5.488-2.927c-.23.636-.549 1.229-.943 1.764l5.488 2.927zm7.878-15.065c0-2.209-1.791-4-4-4s-4 1.791-4 4c0 .324.049.634.122.935l-5.488 2.927c.395.535.713 1.127.943 1.764l5.488-2.927c.731.795 1.77 1.301 2.935 1.301 2.209 0 4-1.791 4-4z"/></svg>
+          <svg
+            id="memex-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M5 7c2.761 0 5 2.239 5 5s-2.239 5-5 5-5-2.239-5-5 2.239-5 5-5zm11.122 12.065c-.073.301-.122.611-.122.935 0 2.209 1.791 4 4 4s4-1.791 4-4-1.791-4-4-4c-1.165 0-2.204.506-2.935 1.301l-5.488-2.927c-.23.636-.549 1.229-.943 1.764l5.488 2.927zm7.878-15.065c0-2.209-1.791-4-4-4s-4 1.791-4 4c0 .324.049.634.122.935l-5.488 2.927c.395.535.713 1.127.943 1.764l5.488-2.927c.731.795 1.77 1.301 2.935 1.301 2.209 0 4-1.791 4-4z"
+            />
+          </svg>
         </a>
       </span>
-      <img id="header-img" src="rugrats.png"></img>
+      <div class="content"></div>
     </div>
   </body>
 </html>
