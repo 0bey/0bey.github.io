@@ -148,9 +148,13 @@
         box-shadow: 2px 2px var(--color-primary);
       }
 
-      #memex {
+      .content {
         font-family: "inconsolata";
         padding: 0.5rem;
+      }
+
+      .node-content {
+        white-space: pre-wrap;
       }
     </style>
     <script type="module" src="memex.js"></script>
@@ -181,7 +185,7 @@
             </g>
           </svg>
         </a>
-        <a class="icon-link" href="/resume.pdf" download>
+        <a class="icon-link" href="/docs/resume.pdf" download>
           cv
           <svg
             id="resume-icon"
