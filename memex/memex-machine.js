@@ -39,10 +39,21 @@ const createMemexMachine = () =>
       loadNode,
       transition(
         "done",
-        "viewingNode",
+        "mappingNode",
         reduce((ctx, ev) => ({
           ...ctx,
           currentNodeData: ev.data,
+        }))
+      )
+    ),
+    mappingNode: invoke(
+      mapNode,
+      transition(
+        "done",
+        "viewingNode",
+        reduce((ctx, ev) => ({
+          ...ctx,
+          currentNodeRichData: ev.data,
         }))
       )
     ),
@@ -67,6 +78,85 @@ export const interpretMemexMachine = (consumer) => {
 };
 
 const mapCallbacksToSend = (send) => ({});
+
+// TODO use caching here
+async function mapNode({ currentNodeData, index }) {
+  if (!index) {
+    index = await loadIndex();
+  }
+  const richData = currentNodeData.split("\n").map(linkTokenizer(index));
+  console.log(richData);
+  return richData;
+}
+
+const linkTokenizer = (index) => (line) => {
+  if (!line) {
+    return [];
+  }
+
+  if (!index) {
+    console.log("no index");
+    return [line];
+  }
+
+  const match = findFirstMatch(index)(line);
+
+  if (!match) {
+    console.log("no match");
+    return [line];
+  }
+
+  if (match.text === line) {
+    return [match];
+  }
+
+  const [left, right] = line.split(match.text);
+  const rest = index.slice(index.indexOf(match.node));
+  console.log("match!" + JSON.stringify(match));
+  return [
+    ...linkTokenizer(rest)(left),
+    match,
+    ...linkTokenizer(rest)(right),
+  ].filter(Boolean);
+};
+
+const findFirstMatch = (index) => (line) => {
+  for (const node of index) {
+    const match = findMatch(line)(node);
+    if (match) {
+      return match;
+    }
+  }
+};
+
+const findMatch = (line) => (node) => {
+  const nodeNameDelimiters = ["_", "-"];
+  const replaceDelimiter = (name, delim) => name.replaceAll(delim, " ");
+  const sanitizedNodeName = nodeNameDelimiters
+    .reduce(replaceDelimiter, withoutExt(node.name))
+    .toLowerCase();
+
+  const indexInLine = line.toLowerCase().indexOf(sanitizedNodeName);
+
+  if (indexInLine === -1) {
+    return;
+  }
+
+  const contentInLine = line.slice(
+    indexInLine,
+    indexInLine + sanitizedNodeName.length
+  );
+
+  return {
+    text: contentInLine,
+    node,
+  };
+};
+
+const withoutExt = (name) => {
+  const [nameWithoutExt] = name.split(".");
+  return nameWithoutExt;
+};
 
 async function loadNode({ currentNodeId }) {
   const response = await fetch(

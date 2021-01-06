@@ -1,6 +1,7 @@
+import { installRouter } from "https://unpkg.com/pwa-helpers/router.js?module";
+
 import { renderMemex } from "./memex-view.js";
 import { interpretMemexMachine } from "./memex-machine.js";
-import { installRouter } from "https://unpkg.com/pwa-helpers/router.js?module";
 
 const service = interpretMemexMachine(renderMemex);
 

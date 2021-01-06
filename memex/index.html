@@ -18,18 +18,23 @@
       @media (prefers-color-scheme: light) {
         body {
           --color-primary: #111;
-          --background-color-secondary: #111;
+          --color-secondary: #2b1f31;
+          --background-color-secondary: #dbd8e3;
           --background-color-primary: #f4f4f4;
-          --color-secondary: #f4f4f4;
         }
       }
 
       @media (prefers-color-scheme: dark) {
         html {
-          --background-color-primary: #111;
-          --background-color-secondary: #f4f4f4;
+          --background-color-primary: #2b1f31;
+          --background-color-secondary: #413d65;
           --color-primary: #f4f4f4;
-          --color-secondary: #111;
+          --color-secondary: #5fb9b0;
+          --color-link: #bef992;
+        }
+
+        a {
+          color: var(--color-link);
         }
       }
 
@@ -102,9 +107,9 @@
         box-sizing: border-box;
         height: 100%;
         align-self: start;
-        border: solid 1px var(--color-primary);
+        border: solid 1px var(--background-color-secondary);
         /* border-radius: 0 0 0.25rem 0.25rem; */
-        box-shadow: 2px 2px var(--color-primary);
+        box-shadow: 2px 2px var(--background-color-secondary);
         overflow-y: auto;
       }
 
@@ -143,9 +148,9 @@
       }
 
       .icon-link.selected {
-        border: 1px solid black;
+        border: 1px solid var(--background-color-secondary);
         border-radius: 0.25rem 0.25rem 0 0;
-        box-shadow: 2px 2px var(--color-primary);
+        box-shadow: 2px 2px var(--background-color-secondary);
       }
 
       .content {
@@ -154,7 +159,7 @@
       }
 
       .node-content {
-        white-space: pre-wrap;
+        /* white-space: pre-wrap; */
       }
     </style>
     <script type="module" src="memex.js"></script>

@@ -13,6 +13,18 @@ const memexIndex = (nodes = []) => html`
   </ul>
 `;
 
+const nodeToken = (token) => {
+  if (typeof token === "string") {
+    return html`${token}`;
+  }
+
+  return html`<a href="?node=${token.node.name}">${token.text}</a>`;
+};
+
+const nodeLine = (lineTokens) => {
+  return [lineTokens.map(nodeToken), html`<br />`];
+};
+
 const memex = (props) => {
   console.log(`update: ${JSON.stringify(props.state, null, 2)}`);
   switch (props.state) {
@@ -22,9 +34,12 @@ const memex = (props) => {
       return memexIndex(props.index);
     case "loadingNode":
       return html`loading...`;
-    case "viewingNode":
+    case "mappingNode":
       return html`<div class="node-content">${props.currentNodeData}</div>`;
-
+    case "viewingNode":
+      return html`<div class="node-content">
+        ${props.currentNodeRichData.map(nodeLine)}
+      </div>`;
     default:
       return html`MACHINE IN UNKNOWN STATE`;
   }
