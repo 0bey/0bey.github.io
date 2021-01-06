@@ -21,8 +21,10 @@ const nodeToken = (token) => {
   return html`<a href="?node=${token.node.name}">${token.text}</a>`;
 };
 
-const nodeLine = (lineTokens) => {
-  return [lineTokens.map(nodeToken), html`<br />`];
+const nodeLine = (lineTokens, index) => {
+  return index === 0
+    ? html`<h2>${lineTokens.map(nodeToken)}</h2>`
+    : html`<p>${lineTokens.map(nodeToken)}</p>`;
 };
 
 const memex = (props) => {
